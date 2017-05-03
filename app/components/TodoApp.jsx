@@ -2,7 +2,7 @@ var React = require('react');
 var TodoList = require('TodoList');
 
 var TodoApp = React.createClass({
-  getInitialState: function () {
+  getInitialState: function() {
     return {
       todos: [
         {
@@ -21,7 +21,7 @@ var TodoApp = React.createClass({
       ]
     };
   },
-  render: function () {
+  render: function() {
     var {todos} = this.state;
 
     return (
