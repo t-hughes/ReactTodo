@@ -13,13 +13,15 @@ describe('TodoList', () => {
   });
 
   it('should render one Todo component for each todo item', () => {
-    var todos = [{
-      id: 1,
-      text: 'test todo'
-    }, {
-      id: 2,
-      text: 'test it again'
-    }];
+    var todos = [
+      {
+        id: 1,
+        text: 'test todo'
+      }, {
+        id: 2,
+        text: 'test it again'
+      }
+    ];
     var todoList = TestUtils.renderIntoDocument(<TodoList todos={todos}/>);
     var todosComponents = TestUtils.scryRenderedComponentsWithType(todoList, Todo);
 
