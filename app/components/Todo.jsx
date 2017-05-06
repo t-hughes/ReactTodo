@@ -19,10 +19,11 @@ var Todo = React.createClass({
     
     return (
       <div className={todoClassName} onClick={() => {
+        this.refs.todoCheck.checked = !completed;
         this.props.onToggle(id);
       }}>
         <div>
-          <input type="checkbox" checked={completed}/>
+          <input type="checkbox" defaultChecked={completed} ref="todoCheck"/>
         </div>
         <div>
           <p>{text}</p>
