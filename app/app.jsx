@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var {Provider} = require('react-redux');
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
 var TodoApp = require('TodoApp');
@@ -12,7 +13,7 @@ store.subscribe(() => {
 });
 
 store.dispatch(actions.addTodo('Wake up'));
-store.dispatch(actions.setSearchText('Yard'));
+store.dispatch(actions.setSearchText('awake'));
 store.dispatch(actions.toggleShowCompleted());
 
 
@@ -23,6 +24,8 @@ $(document).foundation();
 require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
-  <TodoApp/>,
+  <Provider store={store}>
+    <TodoApp/>
+  </Provider>,
   document.getElementById('app')
 );
