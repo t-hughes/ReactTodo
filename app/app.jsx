@@ -12,11 +12,6 @@ store.subscribe(() => {
   console.log('New state', store.getState());
 });
 
-store.dispatch(actions.addTodo('Wake up'));
-store.dispatch(actions.setSearchText('awake'));
-store.dispatch(actions.toggleShowCompleted());
-
-
 // Load foundation - allows use of foundation css framework
 $(document).foundation();
 
