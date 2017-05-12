@@ -2,3 +2,4 @@ node_modules/
 .eslintrc.json
 public/bundle.js
 config/
+npm-debug.log
