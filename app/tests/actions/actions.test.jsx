@@ -8,6 +8,7 @@ var actions = require('actions');
 // Mock Store
 var createMockStore = configureMockStore([thunk]);
 
+// Sync tests
 describe('Actions', () => {
   it('should generate searchText action', () => {
     var action = {
@@ -93,6 +94,26 @@ describe('Actions', () => {
     expect(res).toEqual(action);
   });
 
+  it('should generate LOGIN action object', () => {
+    const action = {
+      type: 'LOGIN',
+      uid: '123abc'
+    };
+    const res = actions.login(action.uid);
+
+    expect(res).toEqual(action);
+  });
+
+  it('should generate LOGOUT action object', () => {
+    const action = {
+      type: 'LOGOUT'
+    };
+    const res = actions.logout();
+
+    expect(res).toEqual(action);
+  });
+
+// Async tests
   describe('Tests with firebase todos', () => {
     var testTodoRef;
 

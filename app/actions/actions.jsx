@@ -1,17 +1,17 @@
 import moment from 'moment';
 
-import firebase, { firebaseRef, githubProvider } from "app/firebase/";
+import firebase, { firebaseRef, githubProvider } from 'app/firebase/';
 
 export var setSearchText = searchText => {
   return {
-    type: "SET_SEARCH_TEXT",
+    type: 'SET_SEARCH_TEXT',
     searchText
   };
 };
 
 export var addTodo = todo => {
   return {
-    type: "ADD_TODO",
+    type: 'ADD_TODO',
     todo
   };
 };
@@ -27,17 +27,19 @@ export var startAddTodo = text => {
     var todoRef = firebaseRef.child('todos').push(todo);
 
     return todoRef.then(() => {
-      dispatch(addTodo({
-        ...todo,
-        id: todoRef.key
-      }));
+      dispatch(
+        addTodo({
+          ...todo,
+          id: todoRef.key
+        })
+      );
     });
   };
 };
 
 export var addTodos = todos => {
   return {
-    type: "ADD_TODOS",
+    type: 'ADD_TODOS',
     todos
   };
 };
@@ -46,11 +48,11 @@ export var startAddTodos = () => {
   return (dispatch, getState) => {
     var todosRef = firebaseRef.child('todos');
 
-    return todosRef.once('value').then((snapshot) => {
+    return todosRef.once('value').then(snapshot => {
       var todos = snapshot.val() || {};
       var parsedTodos = [];
 
-      Object.keys(todos).forEach((todoId) => {
+      Object.keys(todos).forEach(todoId => {
         parsedTodos.push({
           id: todoId,
           ...todos[todoId]
@@ -64,7 +66,7 @@ export var startAddTodos = () => {
 
 export var toggleShowCompleted = () => {
   return {
-    type: "TOGGLE_SHOW_COMPLETED"
+    type: 'TOGGLE_SHOW_COMPLETED'
   };
 };
 
@@ -90,14 +92,30 @@ export var startToggleTodo = (id, completed) => {
   };
 };
 
+export var login = (uid) => {
+  return {
+    type: 'LOGIN',
+    uid
+  }
+};
+
 export var startLogin = () => {
   return (dispatch, getState) => {
-    return firebase.auth().signInWithPopup(githubProvider).then((result) => {
-      console.log('Auth worked!', result);
-    }, (error) => {
-      console.log('Unable to auth', error);
-    });
+    return firebase.auth().signInWithPopup(githubProvider).then(
+      result => {
+        console.log('Auth worked!', result);
+      },
+      error => {
+        console.log('Unable to auth', error);
+      }
+    );
   };
+};
+
+export var logout = () => {
+  return {
+    type: 'LOGOUT'
+  }
 };
 
 export var startLogout = () => {
@@ -107,3 +125,4 @@ export var startLogout = () => {
     });
   };
 };
+
