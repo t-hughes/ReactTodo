@@ -42,6 +42,8 @@ export var showCompletedReducer = (state = false, action) => {
             ...state,
             ...action.todos
           ];
+        case 'LOGOUT':
+          return [];
         default:
           return state;
     }
