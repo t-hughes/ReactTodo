@@ -12,7 +12,7 @@ export var TodoList = React.createClass({
 
       if (filteredTodos.length === 0) {
         return (
-          <p className="container__message">No Tasks Left, Sir</p>
+          <p className="container__message">No Tasks Left</p>
         );
       }
 
